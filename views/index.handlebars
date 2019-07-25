@@ -1,19 +1,39 @@
 <div class="jumbotron bg-warning">
   <h1 class="text-center">CRUD A BURGAH</h1>
   <div class="input-group">
-    <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+    <input type="text" class="form-control" id="burgerInput" placeholder="" aria-label="" aria-describedby="basic-addon1">
     <div class="input-group-append">
-      <button class="btn btn-success" type="button">Order Burgah</button>
+      <button class="btn btn-success" id="orderBtn" type="button">Order Burgah</button>
     </div>
   </div>
 </div>
 
 <div class="row">
 <div class="col-md-6 freshBurger">
-<h1>Hello</h1>
+  {{#each burgerDB}}
+      {{#unless this.devoured}}
+        <h3>
+          {{this.burger_name}}  
+          <button class=" btn btn-success freshBurgerBtn" id={{this.id}}>
+            Devour
+          </button>
+        </h3>   
+      {{/unless}}
+  {{/each}}
 </div>
+
 <div class="col-md-6 eatenBurger">
-<h1>Hello</h1>
+  {{#each burgerDB}}
+      {{#if this.devoured}}
+        <h3>
+          {{this.burger_name}} 
+          <button class=" btn btn-secondary deleteBurgerBtn" id={{this.id}}>
+            Delete
+          </button>
+        </h3>   
+      {{/if}}
+  {{/each}}
+
 
 </div>
 </div>
